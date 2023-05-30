@@ -2,7 +2,6 @@ package com.windjames.puropreco.entities;
 
 import org.springframework.data.annotation.Id;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,20 +13,24 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "tb_ingredientes")
+@Table(name = "tb_receitas")
 @AllArgsConstructor
 @EqualsAndHashCode
 @NoArgsConstructor
 @Getter
 @Setter
-public class Ingredientes {
-    
+public class Receitas {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idIngredientes;
-    private String nome;
-    private long medida;
-    private String unidadeMedida;
-    private double preco;
-    
+    private long idReceitas;
+    private String ingrediente;
+    private long quantidade;
+    //rendimento em gramas da receita
+    private long rendimento;
+    private double custoTotal;
+    //peso da unidade
+    private long pesoUnidade;
+    private double custoUnidade;
+    private long tempoPreparo;
 }
