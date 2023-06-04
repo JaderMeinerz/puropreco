@@ -8,14 +8,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name = "tb_ingredientes")
+
+@Table(name = "tb_maoobra")
 @AllArgsConstructor
 @EqualsAndHashCode
 @NoArgsConstructor
 @Getter
 @Setter
 public class MaoObra {
+
     //salario desejado pela pessoa
     private double salario;
     //horas que a pessoa deseja trabalhar por dia
