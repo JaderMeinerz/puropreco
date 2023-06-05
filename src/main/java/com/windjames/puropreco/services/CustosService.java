@@ -41,7 +41,7 @@ public class CustosService {
         return custosRepository.save(custos);
     }
 
-    public Custos update(CustosDTO custosDTO, @PathVariable Long idCusto){
+    public Custos update(CustosDTO custosDTO, Long idCusto){
         Custos custos = custosRepository.findById(idCusto).get();
         custos.setIdCusto(custosDTO.getIdCusto());
         custos.setNomeCusto(custosDTO.getNomeCusto());
