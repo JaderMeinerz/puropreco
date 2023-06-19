@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.windjames.puropreco.dto.CustosDTO;
 import com.windjames.puropreco.entities.Custos;
@@ -17,20 +16,6 @@ public class CustosService {
     @Autowired
     private CustosRepository custosRepository;
 
-    @Transactional(readOnly = true)
-    public CustosDTO findByID(Long idCusto){
-        Custos result = custosRepository.findById(idCusto).get();
-        CustosDTO dto = new CustosDTO(result);
-        return dto;
-    }
-
-    @Transactional(readOnly = true)
-    public List<CustosDTO> findAll(){
-        List<Custos> result = custosRepository.findAll();
-        List<CustosDTO> dto = result.stream().map(x -> new CustosDTO(x)).toList();
-        return dto;
-    }
-
     public Custos save(CustosDTO custosDTO){
         Custos custos = new Custos();
         custos.setIdCusto(custosDTO.getIdCusto());
@@ -41,19 +26,46 @@ public class CustosService {
         return custosRepository.save(custos);
     }
 
+     @Transactional(readOnly = true)
+    public List<CustosDTO> findAll(){
+        List<Custos> result = custosRepository.findAll();
+        List<CustosDTO> dto = result.stream().map(x -> new CustosDTO(x)).toList();
+        return dto;
+    }
+
+    @Transactional(readOnly = true)
+    public CustosDTO findByID(Long idCusto){
+        try {
+            Custos result = custosRepository.findById(idCusto).get();
+            CustosDTO dto = new CustosDTO(result);
+            return dto;
+        } catch (Exception e) {
+            throw new IllegalArgumentException(String.format("%s não é um id válido", idCusto));
+        }
+        
+    }
+
     public Custos update(CustosDTO custosDTO, Long idCusto){
-        Custos custos = custosRepository.findById(idCusto).get();
-        custos.setIdCusto(custosDTO.getIdCusto());
+        try{
+            Custos custos = custosRepository.findById(idCusto).get();
         custos.setNomeCusto(custosDTO.getNomeCusto());
         custos.setValorCusto(custosDTO.getValorCusto());
         custos.setFixoVariavel(custosDTO.getFixoVariavel());
 
         return custosRepository.save(custos);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(String.format("%s não é um id válido", idCusto));
+        }
+        
     }
 
     public void delete(Long idCusto){
-        Custos custos = custosRepository.findById(idCusto).get();
-        custosRepository.delete(custos);
+        try {
+            Custos custos = custosRepository.findById(idCusto).get();
+            custosRepository.delete(custos); 
+        } catch (Exception e) {
+            throw new IllegalArgumentException(String.format("%s não é um id válido", idCusto));
+        }
     }
 
     

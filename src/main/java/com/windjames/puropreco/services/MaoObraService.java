@@ -36,7 +36,6 @@ public class MaoObraService {
     public MaoObra update(MaoObraDTO maoObraDTO, Long idMaoObra){
         MaoObra maoObra = maoObraRepository.findById(idMaoObra).get();
 
-        maoObra.setIdMaoObra(maoObraDTO.getIdMaoObra());
         maoObra.setSalario(maoObraDTO.getSalario());
         maoObra.setHoraTrabalho(maoObraDTO.getHoraTrabalho());
 

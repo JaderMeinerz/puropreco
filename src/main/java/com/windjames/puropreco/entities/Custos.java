@@ -23,7 +23,7 @@ public class Custos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idCusto;
-
+    
     private String nomeCusto;
     private double valorCusto;
     private String fixoVariavel;

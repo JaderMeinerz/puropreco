@@ -17,8 +17,6 @@ import com.windjames.puropreco.dto.MaoObraDTO;
 import com.windjames.puropreco.entities.MaoObra;
 import com.windjames.puropreco.services.MaoObraService;
 
-import jakarta.websocket.server.PathParam;
-
 @RestController
 @RequestMapping(value = "/valor")
 public class MaoObraController {
