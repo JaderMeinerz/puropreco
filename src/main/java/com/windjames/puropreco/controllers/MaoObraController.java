@@ -4,6 +4,8 @@ package com.windjames.puropreco.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,23 +30,23 @@ public class MaoObraController {
 
     //create
     @PostMapping
-    public MaoObra saveMaoObra(@Valid @RequestBody MaoObraDTO maoObraDTO){
+    public ResponseEntity<MaoObra> saveMaoObra(@Valid @RequestBody MaoObraDTO maoObraDTO){
         MaoObra result = maoObraService.save(maoObraDTO);
-        return result; 
+        return new ResponseEntity<MaoObra>(result, HttpStatus.OK); 
     }
 
     //read
     @GetMapping
-    public List<MaoObraDTO> findAll(){
+    public ResponseEntity<List<MaoObraDTO>> findAll(){
         List<MaoObraDTO> result = maoObraService.findAll();
-        return result;
+        return new ResponseEntity<List<MaoObraDTO>>(result, HttpStatus.OK);
     }
     
     //update
     @PutMapping(value = "/{idMaoObra}")
-    public MaoObra updateMaoObra(@Valid @RequestBody MaoObraDTO maoObraDTO, @PathVariable Long idMaoObra){
+    public ResponseEntity<MaoObra> updateMaoObra(@Valid @RequestBody MaoObraDTO maoObraDTO, @PathVariable Long idMaoObra){
         MaoObra result = maoObraService.update(maoObraDTO, idMaoObra);
-        return result;
+        return new ResponseEntity<MaoObra>(result, HttpStatus.OK);
     }
 
     //delete

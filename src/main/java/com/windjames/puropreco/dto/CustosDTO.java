@@ -29,7 +29,7 @@ public class CustosDTO {
     }
 
     public CustosDTO(CustosProjection projection){
-        idCusto = projection.getIdCustos();
+        idCusto = projection.getIdCusto();
         nomeCusto = projection.getNomeCusto();
         valorCusto = projection.getValorCusto();
         fixoVariavel = projection.getFixoVariavel();

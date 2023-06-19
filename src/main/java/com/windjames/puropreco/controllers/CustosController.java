@@ -49,9 +49,9 @@ public class CustosController {
 
     //Update
     @PutMapping(value = "/{idCusto}")
-    public Custos updateCustos(@Valid @RequestBody CustosDTO custosDTO, @PathVariable Long idCusto){
+    public ResponseEntity<Custos> updateCustos(@Valid @RequestBody CustosDTO custosDTO, @PathVariable Long idCusto){
         Custos custos = custosService.update(custosDTO, idCusto);
-        return custos;
+        return new ResponseEntity<Custos>(custos, HttpStatus.OK);
     }
 
     //Delete

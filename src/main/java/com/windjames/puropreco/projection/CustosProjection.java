@@ -2,7 +2,7 @@ package com.windjames.puropreco.projection;
 
 public interface CustosProjection {
     
-    Long getIdCustos();
+    Long getIdCusto();
     String getNomeCusto();
     Long getValorCusto();
     String getFixoVariavel();
