@@ -17,6 +17,8 @@ import com.windjames.puropreco.dto.MaoObraDTO;
 import com.windjames.puropreco.entities.MaoObra;
 import com.windjames.puropreco.services.MaoObraService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/valor")
 public class MaoObraController {
@@ -26,7 +28,7 @@ public class MaoObraController {
 
     //create
     @PostMapping
-    public MaoObra saveMaoObra(@RequestBody MaoObraDTO maoObraDTO){
+    public MaoObra saveMaoObra(@Valid @RequestBody MaoObraDTO maoObraDTO){
         MaoObra result = maoObraService.save(maoObraDTO);
         return result; 
     }
@@ -40,7 +42,7 @@ public class MaoObraController {
     
     //update
     @PutMapping(value = "/{idMaoObra}")
-    public MaoObra updateMaoObra(@RequestBody MaoObraDTO maoObraDTO, @PathVariable Long idMaoObra){
+    public MaoObra updateMaoObra(@Valid @RequestBody MaoObraDTO maoObraDTO, @PathVariable Long idMaoObra){
         MaoObra result = maoObraService.update(maoObraDTO, idMaoObra);
         return result;
     }

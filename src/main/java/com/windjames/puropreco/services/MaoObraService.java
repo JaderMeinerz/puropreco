@@ -16,14 +16,7 @@ public class MaoObraService {
     @Autowired
     MaoObraRepository maoObraRepository;
 
-    @Transactional(readOnly = true)
-    public List<MaoObraDTO> findAll(){
-        List <MaoObra> result = maoObraRepository.findAll();
-        List<MaoObraDTO> dto =  result.stream().map(x -> new MaoObraDTO(x)).toList();
-        return dto;
-    }
-
-    public MaoObra save(MaoObraDTO maoObraDTO){
+     public MaoObra save(MaoObraDTO maoObraDTO){
         MaoObra maoObra = new MaoObra();
 
         maoObra.setIdMaoObra(maoObraDTO.getIdMaoObra());
@@ -33,17 +26,34 @@ public class MaoObraService {
         return maoObraRepository.save(maoObra);
     }
 
+    @Transactional(readOnly = true)
+    public List<MaoObraDTO> findAll(){
+        List <MaoObra> result = maoObraRepository.findAll();
+        List<MaoObraDTO> dto =  result.stream().map(x -> new MaoObraDTO(x)).toList();
+        return dto;
+    }
+
     public MaoObra update(MaoObraDTO maoObraDTO, Long idMaoObra){
+        try {
         MaoObra maoObra = maoObraRepository.findById(idMaoObra).get();
 
         maoObra.setSalario(maoObraDTO.getSalario());
         maoObra.setHoraTrabalho(maoObraDTO.getHoraTrabalho());
 
         return maoObraRepository.save(maoObra);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(String.format("%s não é um id válido", idMaoObra));
+        }
+        
     }
 
     public void delete(Long idMaoObra){
-        MaoObra maoObra = maoObraRepository.findById(idMaoObra).get();
-        maoObraRepository.delete(maoObra);
-    }
+        try {
+            MaoObra maoObra = maoObraRepository.findById(idMaoObra).get();
+            maoObraRepository.delete(maoObra);
+    
+        } catch (Exception e) {
+            throw new IllegalArgumentException(String.format("%s não é um id válido", idMaoObra));
+        }
+    }    
 }
