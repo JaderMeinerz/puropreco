@@ -3,7 +3,6 @@ package com.windjames.puropreco.dto;
 import org.springframework.beans.BeanUtils;
 
 import com.windjames.puropreco.entities.Custos;
-import com.windjames.puropreco.projection.CustosProjection;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -28,10 +27,4 @@ public class CustosDTO {
         BeanUtils.copyProperties(entity, this);
     }
 
-    public CustosDTO(CustosProjection projection){
-        idCusto = projection.getIdCusto();
-        nomeCusto = projection.getNomeCusto();
-        valorCusto = projection.getValorCusto();
-        fixoVariavel = projection.getFixoVariavel();
-    }
 }

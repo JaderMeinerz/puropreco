@@ -24,13 +24,11 @@ public class Receitas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idReceitas;
-    private String ingrediente;
-    private long quantidade;
+    private String nomeReceita;
     //rendimento em gramas da receita
     private long rendimento;
-    private double custoTotal;
     //peso da unidade
     private long pesoUnidade;
-    private double custoUnidade;
     private long tempoPreparo;
+
 }

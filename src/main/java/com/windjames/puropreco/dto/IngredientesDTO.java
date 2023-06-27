@@ -3,7 +3,6 @@ package com.windjames.puropreco.dto;
 import org.springframework.beans.BeanUtils;
 
 import com.windjames.puropreco.entities.Ingredientes;
-import com.windjames.puropreco.projection.IngredientesProjection;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -29,13 +28,4 @@ public class IngredientesDTO {
     public IngredientesDTO(Ingredientes entity){
         BeanUtils.copyProperties(entity, this);
     }
-
-    public IngredientesDTO(IngredientesProjection projection){
-        idIngredientes = projection.getIdIngredientes();
-        nome = projection.getNome();
-        medida = projection.getMedida();
-        unidadeMedida = projection.getUnidadeMedida();
-        preco = projection.getPreco();
-    }
-
 }
