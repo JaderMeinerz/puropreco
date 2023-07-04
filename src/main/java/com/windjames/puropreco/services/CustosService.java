@@ -40,7 +40,7 @@ public class CustosService {
             CustosDTO dto = new CustosDTO(result);
             return dto;
         } catch (Exception e) {
-            throw new IllegalArgumentException(String.format("%s não é um id válido", idCusto));
+            throw new IllegalArgumentException("%s não é um id válido".formatted(idCusto));
         }
         
     }
@@ -54,7 +54,7 @@ public class CustosService {
 
         return custosRepository.save(custos);
         } catch (Exception e) {
-            throw new IllegalArgumentException(String.format("%s não é um id válido", idCusto));
+            throw new IllegalArgumentException("%s não é um id válido".formatted(idCusto));
         }
         
     }
@@ -64,7 +64,7 @@ public class CustosService {
             Custos custos = custosRepository.findById(idCusto).get();
             custosRepository.delete(custos); 
         } catch (Exception e) {
-            throw new IllegalArgumentException(String.format("%s não é um id válido", idCusto));
+            throw new IllegalArgumentException("%s não é um id válido".formatted(idCusto));
         }
     }
 

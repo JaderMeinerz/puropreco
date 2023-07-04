@@ -42,7 +42,7 @@ public class MaoObraService {
 
         return maoObraRepository.save(maoObra);
         } catch (Exception e) {
-            throw new IllegalArgumentException(String.format("%s não é um id válido", idMaoObra));
+            throw new IllegalArgumentException("%s não é um id válido".formatted(idMaoObra));
         }
         
     }
@@ -53,7 +53,7 @@ public class MaoObraService {
             maoObraRepository.delete(maoObra);
     
         } catch (Exception e) {
-            throw new IllegalArgumentException(String.format("%s não é um id válido", idMaoObra));
+            throw new IllegalArgumentException("%s não é um id válido".formatted(idMaoObra));
         }
     }    
 }

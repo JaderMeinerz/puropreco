@@ -41,7 +41,7 @@ public class IngredientesService {
             IngredientesDTO dto = new IngredientesDTO(result);
             return dto;
         } catch (Exception e) {
-            throw new IllegalArgumentException(String.format("%s não é um id válido", idIngredientes));   
+            throw new IllegalArgumentException("%s não é um id válido".formatted(idIngredientes));   
         }
     }
 
@@ -55,7 +55,7 @@ public class IngredientesService {
 
             return ingredientesRepository.save(ingredientes);
         } catch (Exception e) {
-            throw new IllegalArgumentException(String.format("%s não é um id válido", idIngredientes));
+            throw new IllegalArgumentException("%s não é um id válido".formatted(idIngredientes));
         }
     }
 
@@ -64,7 +64,7 @@ public class IngredientesService {
             Ingredientes ingrediente = ingredientesRepository.findById(idIngredientes).get();
             ingredientesRepository.delete(ingrediente);
         } catch (Exception e) {
-            throw new IllegalArgumentException(String.format("%s não é um id válido", idIngredientes));
+            throw new IllegalArgumentException("%s não é um id válido".formatted(idIngredientes));
         }
         
     }

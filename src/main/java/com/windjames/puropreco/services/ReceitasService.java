@@ -43,7 +43,7 @@ public class ReceitasService {
             ReceitasDTO dto = new ReceitasDTO(result);
             return dto;
         } catch (Exception e) {
-            throw new IllegalArgumentException(String.format("%s não é um id válido", idReceitas));   
+            throw new IllegalArgumentException("%s não é um id válido".formatted(idReceitas));   
         }
     }
 
@@ -56,7 +56,7 @@ public class ReceitasService {
 
           return receitasRepository.save(receita); 
         } catch (Exception e) {
-            throw new IllegalArgumentException(String.format("%s não é um id válido", idReceitas));   
+            throw new IllegalArgumentException("%s não é um id válido".formatted(idReceitas));   
         }
         
     }
@@ -66,7 +66,7 @@ public class ReceitasService {
             Receitas receita = receitasRepository.findById(idReceitas).get();
             receitasRepository.delete(receita);
         } catch (Exception e) {
-            throw new IllegalArgumentException(String.format("%s não é um id válido", idReceitas));   
+            throw new IllegalArgumentException("%s não é um id válido".formatted(idReceitas));   
         }
     }
 }

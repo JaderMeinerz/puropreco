@@ -1,10 +1,7 @@
 package com.windjames.puropreco.dto;
 
-import java.util.List;
-
 import org.springframework.beans.BeanUtils;
 
-import com.windjames.puropreco.entities.IngredientesXReceitas;
 import com.windjames.puropreco.entities.Receitas;
 
 import jakarta.validation.constraints.NotBlank;
@@ -28,13 +25,8 @@ public class ReceitasDTO {
     @NotNull(message = "O campo Tempo de Preparo deve ser preenchido.")
     private long tempoPreparo;
 
-    private List<IngredientesXReceitas> ingredientes;
-
     public ReceitasDTO(Receitas entity){
         BeanUtils.copyProperties(entity, this);
     }
 
-    public ReceitasDTO(List<IngredientesXReceitas> ingredientes){
-        this.ingredientes = ingredientes;
-    }
 }
